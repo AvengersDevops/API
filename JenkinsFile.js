@@ -1,14 +1,14 @@
-﻿pipeline {
+pipeline {
 	
 	agent any
-	
+
 	triggers
 	{
 		pollSCM("H/5 * * * *")
 	}
-	
+
 	stages
-	{	
+	{
 		stage("CLEANUP")
 		{
 			steps
@@ -23,7 +23,7 @@
 				echo "CLEANUP COMPLETED"
 			}
 		}
-		stage("BUILD") 
+		stage("BUILD")
 		{
 			echo "BUILD STARTED"
 
@@ -40,7 +40,7 @@
 			steps
 			{
 				echo "TEST STARTED"
-				
+
 				dir("Tests")
 				{
 					sh "dotnet add package coverlet.collector"
@@ -60,15 +60,15 @@
 					[[failUnhealthy: true, thresholdTarget: 'Conditional', unhealthyThreshold: 80.0, unstableThreshold: 50.0]])], checksName: '',
 					sourceFileResolver: sourceFiles('NEVER_STORE')
 				}
-		}
-		stage("DEPLOY")
-		{
-			steps
+			}
+			stage("DEPLOY")
 			{
+				steps
+				{
 				echo "DEPLOYMENT STARTED"
 				
 				echo "DEPLOYMENT COMPLETED"
+				}
 			}
 		}
 	}
-}

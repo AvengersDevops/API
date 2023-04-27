@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvengersAPI", "AvengersAPI\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F2DF068B-7AC0-4948-B878-0CDDAD933426}"
 	ProjectSection(SolutionItems) = preProject
-		AvengersAPI\JenkinsFile = AvengersAPI\JenkinsFile
+		JenkinsFile.js = JenkinsFile.js
 	EndProjectSection
 EndProject
 Global
@@ -23,5 +23,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1C658CE1-19F7-44C9-A0CA-398639229976}
 	EndGlobalSection
 EndGlobal
