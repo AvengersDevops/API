@@ -1,4 +1,5 @@
-pipeline {
+pipeline
+{
 	
 	agent any
 
@@ -58,17 +59,18 @@ pipeline {
 					archiveArtifacts "Tests/TestResults/*/coverage.cobertura.xml"
 					publishCoverage adapters: [istanbulCoberturaAdapter(path: 'Tests/TestResults/*/coverage.cobertura.xml', thresholds:
 					[[failUnhealthy: true, thresholdTarget: 'Conditional', unhealthyThreshold: 80.0, unstableThreshold: 50.0]])], checksName: '',
-					sourceFileResolver: sourceFiles('NEVER_STORE')
-				}
-			}
-			stage("DEPLOY")
-			{
-				steps
-				{
-				echo "DEPLOYMENT STARTED"
-				
-				echo "DEPLOYMENT COMPLETED"
+						sourceFileResolver: sourceFiles('NEVER_STORE')
 				}
 			}
 		}
+		stage("DEPLOY")
+		{
+			steps
+			{
+			echo "DEPLOYMENT STARTED"
+			
+			echo "DEPLOYMENT COMPLETED"
+			}
+		}
 	}
+}
