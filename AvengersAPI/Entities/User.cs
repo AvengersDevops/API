@@ -1,4 +1,7 @@
-﻿namespace AvengersAPI.Entities;
+﻿using System;
+using System.Collections.Generic;
+
+namespace AvengersAPI.Entities;
 
 public partial class User
 {

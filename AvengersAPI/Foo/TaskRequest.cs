@@ -1,52 +1,130 @@
 ﻿using AvengersAPI.Entities;
 using AvengersAPI.Models;
-using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
 using Task = AvengersAPI.Entities.Task;
 
 namespace AvengersAPI.Foo;
 
 public abstract class TaskRequest
 {
-    public static dynamic Create(dynamic body)
+    public static Task? Create(dynamic body, out CustomResponse? customResponse)
     {
         if (body.userId is null)
-            return CustomResponse.Create("error", "User id is null");
-            
-        if (body.title is null)
-            return CustomResponse.Create("error", "Title is null");
-        
-        if (body.description is null)
-            return CustomResponse.Create("error", "Description is null");
-        
-        if (body.dueDate is null)
-            return CustomResponse.Create("error", "Due date is null");
-        
-        if (body.done is null)
-            return CustomResponse.Create("error", "Done is null");
-        var task = new Task
         {
+            customResponse = new CustomResponse("error", "User id is null");
+            return null;
+        }
+
+        if (body.title is null)
+        {
+            customResponse = new CustomResponse("error", "Title is null");
+            return null;
+        }
+
+        if (body.description is null)
+        {
+            customResponse = new CustomResponse("error", "Description is null");
+            return null;
+        }
+
+        if (body.dueDate is null)
+        {
+            customResponse = new CustomResponse("error", "Due date is null");
+            return null;
+        }
+
+        if (body.done is null)
+        {
+            customResponse = new CustomResponse("error", "Done is null");
+            return null;
+        }
+        
+        customResponse = null;
+        return new Task
+        {
+            UserId = int.Parse(body.userId.ToString()),
             Title = body.title,
             Description = body.description,
             DueDate = body.dueDate,
             Done = body.done
         };
-        var userId = body.userId.ToString();
-        return new TaskToUserAssociation(task,int.Parse(userId));
     }
-    public static dynamic Read(dynamic body)
+    
+    public static Task? Read(dynamic body, out CustomResponse? customResponse)
     {
         if (body.id is null)
-            return CustomResponse.Create("error", "Id is null");
-        var id = body.id.ToString();
-        return new TaskToUserAssociation(null,int.Parse(id));
+        {
+            customResponse = new CustomResponse("error", "Id is null");
+            return null;
+        }
+        
+        customResponse = null;
+        return new Task { Id = int.Parse(body.id.ToString()) };
+    }
+    
+    public static User? ReadAll(dynamic body, out CustomResponse? customResponse)
+    {
+        if (body.userId is null)
+        {
+            customResponse = new CustomResponse("error", "User id is null");
+            return null;
+        }
+
+        customResponse = null;
+        return new User { Id = int.Parse(body.userId.ToString()) };
+    }
+    
+    public static Task? Update(dynamic body, out CustomResponse? customResponse)
+    {
+        if (body.id is null)
+        {
+            customResponse = new CustomResponse("error", "Id is null");
+            return null;
+        }
+
+        if (body.title is null)
+        {
+            customResponse = new CustomResponse("error", "Title is null");
+            return null;
+        }
+
+        if (body.description is null)
+        {
+            customResponse = new CustomResponse("error", "Description is null");
+            return null;
+        }
+
+        if (body.dueDate is null)
+        {
+            customResponse = new CustomResponse("error", "Due date is null");
+            return null;
+        }
+
+        if (body.done is null)
+        {
+            customResponse = new CustomResponse("error", "Done is null");
+            return null;
+        }
+
+        customResponse = null;
+        return new Task
+        {
+            Id = int.Parse(body.id.ToString()),
+            Title = body.title,
+            Description = body.description,
+            DueDate = body.dueDate,
+            Done = body.done
+        };
     }
 
-    public static dynamic Delete(dynamic body)
+    public static Task? Delete(dynamic body, out CustomResponse? customResponse)
     {
         if (body.id is null)
-            return CustomResponse.Create("error", "Id is null");
-        var id = body.id.ToString();
-        return new TaskToUserAssociation(null,int.Parse(id));
+        {
+            customResponse = new CustomResponse("error", "Id is null");
+            return null;
+        }
+        
+        customResponse = null;
+        return new Task { Id = int.Parse(body.id.ToString()) };
     }
 }
