@@ -11,6 +11,4 @@ public partial class Task
     public DateTime DueDate { get; set; }
 
     public bool Done { get; set; }
-
-    public virtual ICollection<TaskToUser> TaskToUsers { get; } = new List<TaskToUser>();
 }

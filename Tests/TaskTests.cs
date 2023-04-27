@@ -12,8 +12,9 @@ public class TaskTests
     [Test]
     public async Task CreateGood()
     {
-        var body = new Dictionary<string, string>
+        var body = new Dictionary<string, dynamic>
         {
+            { "userId", "1" },
             { "title", "Test" },
             { "description", "Test" },
             { "dueDate", "2021-01-01" },
