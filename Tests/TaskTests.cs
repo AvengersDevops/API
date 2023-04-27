@@ -80,4 +80,68 @@ public class TaskTests
         Assert.That(response, Is.Not.Empty);
         Assert.That(response["status"]!.ToString() == "error", Is.True);
     }
+    [Test]
+    public async Task DeleteGood()
+    {
+        var body = new Dictionary<string, string>
+        {
+            { "id", "1" }
+        };
+
+        var json = JsonConvert.SerializeObject(body);
+        var request = new DefaultHttpContext
+        {
+            Request =
+            {
+                Body = new MemoryStream(Encoding.UTF8.GetBytes(json))
+            }
+        };
+        
+        var taskController = new TaskController
+        {
+            ControllerContext = new ControllerContext
+            {
+                HttpContext = request
+            }
+        };
+        
+        var r = JsonConvert.SerializeObject(await taskController.Delete());
+        var response = JObject.Parse(r);
+        
+        Assert.That(response, Is.Not.Null);
+        Assert.That(response, Is.Not.Empty);
+        Assert.That(response["status"]!.ToString() == "success", Is.True);
+    }
+    [Test]
+    public async Task DeleteBad()
+    {
+        var body = new Dictionary<string, string>
+        {
+            { "id", "1" }
+        };
+
+        var json = JsonConvert.SerializeObject(body);
+        var request = new DefaultHttpContext
+        {
+            Request =
+            {
+                Body = new MemoryStream(Encoding.UTF8.GetBytes(json))
+            }
+        };
+        
+        var taskController = new TaskController
+        {
+            ControllerContext = new ControllerContext
+            {
+                HttpContext = request
+            }
+        };
+        
+        var r = JsonConvert.SerializeObject(await taskController.Delete());
+        var response = JObject.Parse(r);
+        
+        Assert.That(response, Is.Not.Null);
+        Assert.That(response, Is.Not.Empty);
+        Assert.That(response["status"]!.ToString() == "error", Is.True);
+    }
 }
