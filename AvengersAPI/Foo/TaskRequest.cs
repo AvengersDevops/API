@@ -34,4 +34,19 @@ public abstract class TaskRequest
         var userId = body.userId.ToString();
         return new TaskToUserAssociation(task,int.Parse(userId));
     }
+    public static dynamic Read(dynamic body)
+    {
+        if (body.id is null)
+            return CustomResponse.Create("error", "Id is null");
+        var id = body.id.ToString();
+        return new TaskToUserAssociation(null,int.Parse(id));
+    }
+
+    public static dynamic Delete(dynamic body)
+    {
+        if (body.id is null)
+            return CustomResponse.Create("error", "Id is null");
+        var id = body.id.ToString();
+        return new TaskToUserAssociation(null,int.Parse(id));
+    }
 }

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sonko\\RiderProjects\\API-Avengers\\Tests\\Tests.csproj": {}
+    "C:\\Users\\lucar\\RiderProjects\\APIs\\Tests\\Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sonko\\RiderProjects\\API-Avengers\\AvengersAPI\\AvengersAPI.csproj": {
+    "C:\\Users\\lucar\\RiderProjects\\APIs\\AvengersAPI\\AvengersAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sonko\\RiderProjects\\API-Avengers\\AvengersAPI\\AvengersAPI.csproj",
+        "projectUniqueName": "C:\\Users\\lucar\\RiderProjects\\APIs\\AvengersAPI\\AvengersAPI.csproj",
         "projectName": "AvengersAPI",
-        "projectPath": "C:\\Users\\sonko\\RiderProjects\\API-Avengers\\AvengersAPI\\AvengersAPI.csproj",
-        "packagesPath": "C:\\Users\\sonko\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sonko\\RiderProjects\\API-Avengers\\AvengersAPI\\obj\\",
+        "projectPath": "C:\\Users\\lucar\\RiderProjects\\APIs\\AvengersAPI\\AvengersAPI.csproj",
+        "packagesPath": "C:\\Users\\lucar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\lucar\\RiderProjects\\APIs\\AvengersAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\sonko\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\lucar\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -91,24 +91,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\sonko\\RiderProjects\\API-Avengers\\Tests\\Tests.csproj": {
+    "C:\\Users\\lucar\\RiderProjects\\APIs\\Tests\\Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sonko\\RiderProjects\\API-Avengers\\Tests\\Tests.csproj",
+        "projectUniqueName": "C:\\Users\\lucar\\RiderProjects\\APIs\\Tests\\Tests.csproj",
         "projectName": "Tests",
-        "projectPath": "C:\\Users\\sonko\\RiderProjects\\API-Avengers\\Tests\\Tests.csproj",
-        "packagesPath": "C:\\Users\\sonko\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sonko\\RiderProjects\\API-Avengers\\Tests\\obj\\",
+        "projectPath": "C:\\Users\\lucar\\RiderProjects\\APIs\\Tests\\Tests.csproj",
+        "packagesPath": "C:\\Users\\lucar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\lucar\\RiderProjects\\APIs\\Tests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\sonko\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\lucar\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -124,8 +124,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\sonko\\RiderProjects\\API-Avengers\\AvengersAPI\\AvengersAPI.csproj": {
-                "projectPath": "C:\\Users\\sonko\\RiderProjects\\API-Avengers\\AvengersAPI\\AvengersAPI.csproj"
+              "C:\\Users\\lucar\\RiderProjects\\APIs\\AvengersAPI\\AvengersAPI.csproj": {
+                "projectPath": "C:\\Users\\lucar\\RiderProjects\\APIs\\AvengersAPI\\AvengersAPI.csproj"
               }
             }
           }
@@ -177,7 +177,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
