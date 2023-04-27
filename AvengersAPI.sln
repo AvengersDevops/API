@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		JenkinsFile.js = JenkinsFile.js
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{BBBF0672-43A5-43B7-BB3D-A37459C1B217}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{888E94E7-A531-49DE-BB8D-110FFAAC018B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{888E94E7-A531-49DE-BB8D-110FFAAC018B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{888E94E7-A531-49DE-BB8D-110FFAAC018B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBBF0672-43A5-43B7-BB3D-A37459C1B217}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBBF0672-43A5-43B7-BB3D-A37459C1B217}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBBF0672-43A5-43B7-BB3D-A37459C1B217}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBBF0672-43A5-43B7-BB3D-A37459C1B217}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

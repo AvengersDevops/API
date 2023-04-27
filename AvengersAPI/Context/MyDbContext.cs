@@ -57,14 +57,6 @@ public partial class MyDbContext : DbContext
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.TaskId).HasColumnName("taskId");
             entity.Property(e => e.UserId).HasColumnName("userId");
-
-            entity.HasOne(d => d.Task).WithMany(p => p.TaskToUsers)
-                .HasForeignKey(d => d.TaskId)
-                .HasConstraintName("FK__TaskToUse__taskI__60A75C0F");
-
-            entity.HasOne(d => d.User).WithMany(p => p.TaskToUsers)
-                .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__TaskToUse__userI__619B8048");
         });
 
         modelBuilder.Entity<User>(entity =>
