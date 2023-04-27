@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sonko\\RiderProjects\\AvengersAPI\\AvengersAPI\\AvengersAPI.csproj": {}
+    "C:\\Users\\sonko\\Documents\\GitHub\\API\\AvengersAPI\\AvengersAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sonko\\RiderProjects\\AvengersAPI\\AvengersAPI\\AvengersAPI.csproj": {
+    "C:\\Users\\sonko\\Documents\\GitHub\\API\\AvengersAPI\\AvengersAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sonko\\RiderProjects\\AvengersAPI\\AvengersAPI\\AvengersAPI.csproj",
+        "projectUniqueName": "C:\\Users\\sonko\\Documents\\GitHub\\API\\AvengersAPI\\AvengersAPI.csproj",
         "projectName": "AvengersAPI",
-        "projectPath": "C:\\Users\\sonko\\RiderProjects\\AvengersAPI\\AvengersAPI\\AvengersAPI.csproj",
+        "projectPath": "C:\\Users\\sonko\\Documents\\GitHub\\API\\AvengersAPI\\AvengersAPI.csproj",
         "packagesPath": "C:\\Users\\sonko\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sonko\\RiderProjects\\AvengersAPI\\AvengersAPI\\obj\\",
+        "outputPath": "C:\\Users\\sonko\\Documents\\GitHub\\API\\AvengersAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -49,6 +49,20 @@
               "target": "Package",
               "version": "[7.0.2, )"
             },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"
@@ -73,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
