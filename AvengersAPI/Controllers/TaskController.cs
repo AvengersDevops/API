@@ -1,9 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-using AvengersAPI.Context;
+﻿using AvengersAPI.Context;
 using AvengersAPI.Foo;
 using AvengersAPI.Models;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
 using Task = AvengersAPI.Entities.Task;
 using Validator = AvengersAPI.Models.Validator;
 
