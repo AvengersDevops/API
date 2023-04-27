@@ -17,19 +17,17 @@ public partial class MyDbContext : DbContext
 
     public virtual DbSet<Task> Tasks { get; set; }
 
-    public virtual DbSet<TaskToUser> TaskToUsers { get; set; }
-
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=avengerstodo.database.windows.net;database=avengerstodo;user id=avenger@avengerstodo;password=Vengeance123;trusted_connection=true;TrustServerCertificate=True;integrated security=false;");
+        => optionsBuilder.UseSqlServer("Server=avengerstodo.database.windows.net;database=avengerstodo;user id=avenger@avengerstodo;password=Vengeance123;trusted_connection=true;TrustServerCertificate=True;integrated security=false; ");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Task>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Task__3213E83F5A343852");
+            entity.HasKey(e => e.Id).HasName("PK__Task__3213E83F29F381BE");
 
             entity.ToTable("Task");
 
@@ -46,22 +44,12 @@ public partial class MyDbContext : DbContext
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("title");
-        });
-
-        modelBuilder.Entity<TaskToUser>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PK__TaskToUs__3213E83FC31AE583");
-
-            entity.ToTable("TaskToUser");
-
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.TaskId).HasColumnName("taskId");
             entity.Property(e => e.UserId).HasColumnName("userId");
         });
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__User__3213E83F7E7813A2");
+            entity.HasKey(e => e.Id).HasName("PK__User__3213E83F5561FC0F");
 
             entity.ToTable("User");
 
