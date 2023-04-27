@@ -4,7 +4,6 @@ namespace AvengersAPI.Models;
 
 public abstract class Validator
 {
-    
     public static async Task<object> Body<T>(
         Stream requestBody,
         Func<dynamic, T> func) {
@@ -14,7 +13,7 @@ public abstract class Validator
         if (body is null)
             return CustomResponse.Create("error", "Body is null");
 
-        T value = func(body);
+        dynamic value = func(body);
 
         return value;
     }
