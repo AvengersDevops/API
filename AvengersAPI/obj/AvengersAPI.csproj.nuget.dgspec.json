@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sonko\\Documents\\GitHub\\API\\AvengersAPI\\AvengersAPI.csproj": {}
+    "C:\\Users\\sonko\\RiderProjects\\API-Avengers\\AvengersAPI\\AvengersAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sonko\\Documents\\GitHub\\API\\AvengersAPI\\AvengersAPI.csproj": {
+    "C:\\Users\\sonko\\RiderProjects\\API-Avengers\\AvengersAPI\\AvengersAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sonko\\Documents\\GitHub\\API\\AvengersAPI\\AvengersAPI.csproj",
+        "projectUniqueName": "C:\\Users\\sonko\\RiderProjects\\API-Avengers\\AvengersAPI\\AvengersAPI.csproj",
         "projectName": "AvengersAPI",
-        "projectPath": "C:\\Users\\sonko\\Documents\\GitHub\\API\\AvengersAPI\\AvengersAPI.csproj",
+        "projectPath": "C:\\Users\\sonko\\RiderProjects\\API-Avengers\\AvengersAPI\\AvengersAPI.csproj",
         "packagesPath": "C:\\Users\\sonko\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sonko\\Documents\\GitHub\\API\\AvengersAPI\\obj\\",
+        "outputPath": "C:\\Users\\sonko\\RiderProjects\\API-Avengers\\AvengersAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -62,6 +62,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.5, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
