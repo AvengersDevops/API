@@ -448,3 +448,5 @@ C:\Users\sonko\RiderProjects\AvengersAPI\Tests\obj\Debug\net7.0\refint\Tests.dll
 C:\Users\sonko\RiderProjects\AvengersAPI\Tests\obj\Debug\net7.0\Tests.pdb
 C:\Users\sonko\RiderProjects\AvengersAPI\Tests\obj\Debug\net7.0\Tests.genruntimeconfig.cache
 C:\Users\sonko\RiderProjects\AvengersAPI\Tests\obj\Debug\net7.0\ref\Tests.dll
+C:\Users\sonko\RiderProjects\AvengersAPI\Tests\bin\Debug\net7.0\Npgsql.dll
+C:\Users\sonko\RiderProjects\AvengersAPI\Tests\bin\Debug\net7.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll

@@ -1,4 +1,5 @@
-﻿using AvengersAPI.Entities;
+﻿using System.Collections;
+using AvengersAPI.Entities;
 using AvengersAPI.Models;
 using Task = AvengersAPI.Entities.Task;
 
@@ -38,6 +39,11 @@ public abstract class TaskRequest
             return null;
         }
         
+        bool doneValue = bool.Parse(body.done.ToString());
+        var doneBitArray = new BitArray(1); // Specify the desired length of the BitArray
+
+        doneBitArray.Set(0, doneValue);
+        
         customResponse = null;
         return new Task
         {
@@ -45,7 +51,7 @@ public abstract class TaskRequest
             Title = body.title,
             Description = body.description,
             DueDate = body.dueDate,
-            Done = body.done
+            Done = doneBitArray
         };
     }
     
@@ -104,7 +110,11 @@ public abstract class TaskRequest
             customResponse = new CustomResponse("error", "Done is null");
             return null;
         }
+bool doneValue = bool.Parse(body.done.ToString());
+        var doneBitArray = new BitArray(1); // Specify the desired length of the BitArray
 
+        doneBitArray.Set(0, doneValue);
+        
         customResponse = null;
         return new Task
         {
@@ -112,7 +122,7 @@ public abstract class TaskRequest
             Title = body.title,
             Description = body.description,
             DueDate = body.dueDate,
-            Done = body.done
+            Done = doneBitArray
         };
     }
 
