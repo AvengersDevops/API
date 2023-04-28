@@ -41,7 +41,6 @@ public abstract class TaskRequest
         
         bool doneValue = bool.Parse(body.done.ToString());
         var doneBitArray = new BitArray(1); // Specify the desired length of the BitArray
-
         doneBitArray.Set(0, doneValue);
         
         customResponse = null;
@@ -110,9 +109,9 @@ public abstract class TaskRequest
             customResponse = new CustomResponse("error", "Done is null");
             return null;
         }
-bool doneValue = bool.Parse(body.done.ToString());
+        
+        bool doneValue = bool.Parse(body.done.ToString());
         var doneBitArray = new BitArray(1); // Specify the desired length of the BitArray
-
         doneBitArray.Set(0, doneValue);
         
         customResponse = null;
