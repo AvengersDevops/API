@@ -9,6 +9,7 @@
       "Tests/1.0.0": {
         "dependencies": {
           "AvengersAPI": "1.0.0",
+          "Microsoft.EntityFrameworkCore.Analyzers": "7.0.5",
           "Microsoft.NET.Test.Sdk": "17.3.2",
           "NUnit": "3.13.3",
           "NUnit.Analyzers": "3.5.0",
