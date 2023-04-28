@@ -16,73 +16,86 @@ public class TaskController : ControllerBase
     private readonly MyDbContext _context = new();
 
     [HttpPost]
-    public async Task<dynamic> Create()
+    public async Task<CustomResponse> Create()
     {
-        dynamic body = await Validator.Body(Request.Body, d => TaskRequest.Create(d));
-        if (body is not TaskToUserAssociation taskToUserAssociation)
-            return body;
+        CustomResponse? customResponse = null;
+        Task? task = await Validator.Body<Task>(Request.Body, d => TaskRequest.Create(d, out customResponse));
+        if (customResponse is not null)
+            return customResponse;
         
-        await _context.Tasks.AddAsync(taskToUserAssociation.Task);
-        await _context.SaveChangesAsync();
-       
-        TaskToUser taskToUser = new()
-        {
-            TaskId = taskToUserAssociation.Task.Id,
-            UserId = taskToUserAssociation.UserId
-        };
-        
-        await _context.TaskToUsers.AddAsync(taskToUser);
+        await _context.Tasks.AddAsync(task!);
         await _context.SaveChangesAsync();
         
-        return CustomResponse.Create("success", $"Task created and associated with user {taskToUserAssociation.UserId}", taskToUserAssociation.Task);
+        return new CustomResponse("success", $"Task created and associated with user {task!.UserId}", task);
     }
 
-    [HttpGet]
-    public async Task<dynamic> Read()
+    [HttpPost]
+    public async Task<CustomResponse> Read()
     {
-        dynamic body = await Validator.Body(Request.Body, d => TaskRequest.Read(d));
-        if (body is not TaskToUserAssociation taskToUserAssociation)
-            return body;
+        CustomResponse? customResponse = null;
+        Task? task = await Validator.Body<Task>(Request.Body, d => TaskRequest.Read(d, out customResponse));
+        if (customResponse is not null)
+            return customResponse;
         
-        var taskToUser = await _context.TaskToUsers.FindAsync(taskToUserAssociation.UserId);
-        if (taskToUser is null)
-            return CustomResponse.Create("error", $"Task to user association with id {taskToUserAssociation.UserId} not found");
-        
-        var task = await _context.Tasks.FindAsync(taskToUser.TaskId);
-        if (task is null)
-            return CustomResponse.Create("error", $"Task with id {taskToUser.TaskId} not found");
-        
-        return CustomResponse.Create("success", $"Task to user association with id {taskToUserAssociation.UserId} found", task);
+        var t = await _context.Tasks.FindAsync(task!.Id);
+        return t is null ?
+            new CustomResponse("error", $"Task with id {task.Id} not found") :
+            new CustomResponse("success", $"Task with id {task.Id} found", t);
     }
 
-    [HttpGet("all")]
-    public async Task<dynamic> ReadAll()
+    [HttpPost]
+    public async Task<CustomResponse> ReadAll()
     {
-        var tasks = await _context.Tasks.ToListAsync();
-        return CustomResponse.Create("success", "All tasks", tasks);
+        CustomResponse? customResponse = null;
+        User? user = await Validator.Body<User>(Request.Body, d => TaskRequest.ReadAll(d, out customResponse));
+        if (customResponse is not null)
+            return customResponse;
+        
+        var tasks = await _context.Tasks.Where(t => t.UserId == user!.Id).ToListAsync();
+
+        return tasks.Count == 0 ?
+            new CustomResponse("error", $"No tasks found for user {user!.Id}") :
+            new CustomResponse("success", $"Tasks found for user {user!.Id}", tasks);
     }
 
-    [HttpDelete]
-    public async Task<dynamic> Delete()
+    [HttpPost]
+    public async Task<CustomResponse> Update()
     {
-        dynamic body = await Validator.Body(Request.Body, d => TaskRequest.Delete(d));
-        if (body is not TaskToUserAssociation taskToUserAssociation)
-            return body;
+        CustomResponse? customResponse = null;
+        Task? task = await Validator.Body<Task>(Request.Body, d => TaskRequest.Update(d, out customResponse));
+        if (customResponse is not null)
+            return customResponse;
+
+        var t = await _context.Tasks.FindAsync(task!.Id);
+        if (t is null)
+            return new CustomResponse("error", $"Task with id {task.Id} not found");
         
-        var taskToUser = await _context.TaskToUsers.FindAsync(taskToUserAssociation.UserId);
-        if (taskToUser is null)
-            return CustomResponse.Create("error", $"Task to user association with id {taskToUserAssociation.UserId} not found");
+        t.Title = task.Title;
+        t.Description = task.Description;
+        t.DueDate = task.DueDate;
+        t.Done = task.Done;
         
-        var task = await _context.Tasks.FindAsync(taskToUser.TaskId);
-        if (task is null)
-            return CustomResponse.Create("error", $"Task with id {taskToUser.TaskId} not found");
-        
-        _context.Tasks.Remove(task);
         await _context.SaveChangesAsync();
         
-        _context.TaskToUsers.Remove(taskToUser);
+        return new CustomResponse("success", $"Task with id {task.Id} updated", t);
+    }
+
+
+    [HttpPost]
+    public async Task<CustomResponse> Delete()
+    {
+        CustomResponse? customResponse = null;
+        Task? task = await Validator.Body<Task>(Request.Body, d => TaskRequest.Delete(d, out customResponse));
+        if (customResponse is not null)
+            return customResponse;
+        
+        var t = await _context.Tasks.FindAsync(task!.Id);
+        if (t is null)
+            return new CustomResponse("error", $"Task with id {task.Id} not found");
+        
+        _context.Tasks.Remove(t);
         await _context.SaveChangesAsync();
         
-        return CustomResponse.Create("success", $"Task to user association with id {taskToUserAssociation.UserId} deleted", task);
+        return new CustomResponse("success", $"Task with id {task.Id} deleted", t);
     }
 }                                   

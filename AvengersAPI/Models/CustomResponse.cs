@@ -1,16 +1,11 @@
 ﻿namespace AvengersAPI.Models;
 
-public abstract class CustomResponse
+public class CustomResponse : Dictionary<string,dynamic>
 {
-    public static object Create(string status, string message, object? data = null)
+    public CustomResponse(string status, string message, object? data = null)
     {
-        var notNullData = data ?? new object();
-        var response = new Dictionary<string, object>
-        {
-            { "status", status },
-            { "message", message },
-            { "data", notNullData }
-        };
-        return response;
+        Add("status", status);
+        Add("message", message);
+        Add("data", data ?? new object());
     }
 }
