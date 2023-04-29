@@ -16,6 +16,7 @@ public class TaskController : ControllerBase
     private readonly MyDbContext _context = new();
 
     [HttpPost]
+    [Route(nameof(Create))]
     public async Task<CustomResponse> Create()
     {
         CustomResponse? customResponse = null;
@@ -30,6 +31,7 @@ public class TaskController : ControllerBase
     }
 
     [HttpPost]
+    [Route(nameof(Read))]
     public async Task<CustomResponse> Read()
     {
         CustomResponse? customResponse = null;
@@ -44,6 +46,7 @@ public class TaskController : ControllerBase
     }
 
     [HttpPost]
+    [Route(nameof(ReadAll))]
     public async Task<CustomResponse> ReadAll()
     {
         CustomResponse? customResponse = null;
@@ -59,6 +62,7 @@ public class TaskController : ControllerBase
     }
 
     [HttpPost]
+    [Route(nameof(Update))]
     public async Task<CustomResponse> Update()
     {
         CustomResponse? customResponse = null;
@@ -82,6 +86,7 @@ public class TaskController : ControllerBase
 
 
     [HttpPost]
+    [Route(nameof(Delete))]
     public async Task<CustomResponse> Delete()
     {
         CustomResponse? customResponse = null;
