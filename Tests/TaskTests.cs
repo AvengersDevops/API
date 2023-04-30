@@ -96,7 +96,7 @@ public class TaskTests
     {
         var body = new Dictionary<string, dynamic>
         {
-            { "id", _maxId.ToString() }
+            { "id", "2" }
         };
 
         var json = JsonConvert.SerializeObject(body);
@@ -228,7 +228,7 @@ var request = new DefaultHttpContext
     {
         var body = new Dictionary<string, dynamic>
         {
-            { "id", (_maxId-1).ToString() },
+            { "id", "2" },
             { "title", "Test" },
             { "description", "Test" },
             { "dueDate", "2021-01-01" },
@@ -302,7 +302,7 @@ var request = new DefaultHttpContext
     {
         var body = new Dictionary<string, dynamic>
         {
-            { "id", (_maxId-2).ToString() }
+            { "id", _maxId.ToString() }
         };
 
         var json = JsonConvert.SerializeObject(body);
