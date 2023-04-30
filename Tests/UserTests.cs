@@ -93,7 +93,7 @@ public class UserTests
     {
         var body = new Dictionary<string, dynamic>
         {
-            { "id", _maxId.ToString() }
+            { "id", "1" }
         };
 
         var json = JsonConvert.SerializeObject(body);
@@ -159,7 +159,7 @@ public class UserTests
     {
         var body = new Dictionary<string, dynamic>
         {
-            { "id", _maxId.ToString() },
+            { "id", "1" },
             { "name", "Testname" },
             { "email", "Testemail" },
             { "password", "Testpassword" }
@@ -231,7 +231,7 @@ public class UserTests
     {
         var body = new Dictionary<string, dynamic>
         {
-            { "id", (_maxId-1).ToString() }
+            { "id", _maxId.ToString() }
         };
 
         var json = JsonConvert.SerializeObject(body);
