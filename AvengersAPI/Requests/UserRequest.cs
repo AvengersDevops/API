@@ -1,26 +1,26 @@
 ﻿using AvengersAPI.Entities;
 using AvengersAPI.Models;
-using Task = System.Threading.Tasks.Task;
+using AvengersAPI.Utils;
 
-namespace AvengersAPI.Foo;
+namespace AvengersAPI.Requests;
 
 public abstract class UserRequest
 {
     public static User? Create(dynamic body, out CustomResponse? customResponse)
     {
-        if (body.name is null)
+        if (ParameterHandler.IsNull(body.name))
         {
             customResponse = new CustomResponse("error", "Name is null");
             return null;
         }
 
-        if (body.email is null)
+        if (ParameterHandler.IsNull(body.email))
         {
             customResponse = new CustomResponse("error", "Email is null");
             return null;
         }
 
-        if (body.password is null)
+        if (ParameterHandler.IsNull(body.password))
         {
             customResponse = new CustomResponse("error", "Password is null");
             return null;
@@ -37,7 +37,7 @@ public abstract class UserRequest
 
     public static User? Read(dynamic body, out CustomResponse? customResponse)
     {
-        if (body.id is null)
+        if (ParameterHandler.IsNull(body.id))
         {
             customResponse = new CustomResponse("error", "Id is null");
             return null;
@@ -53,23 +53,23 @@ public abstract class UserRequest
 
     public static User? Update(dynamic body, out CustomResponse? customResponse)
     {
-        if (body.id is null)
+        if (ParameterHandler.IsNull(body.id))
         {
             customResponse = new CustomResponse("error", "Id is null");
             return null;
         }
 
-        if (body.name is null)
+        if (ParameterHandler.IsNull(body.name))
         {
             customResponse = new CustomResponse("error", "Name is null");
             return null;
         }
-        if (body.email is null)
+        if (ParameterHandler.IsNull(body.email))
         {
             customResponse = new CustomResponse("error", "Email is null");
             return null;
         }
-        if (body.password is null)
+        if (ParameterHandler.IsNull(body.password))
         {
             customResponse = new CustomResponse("error", "Password is null");
             return null;
@@ -87,7 +87,7 @@ public abstract class UserRequest
     
     public static User? Delete(dynamic body, out CustomResponse? customResponse)
     {
-        if (body.id is null)
+        if (ParameterHandler.IsNull(body.id))
         {
             customResponse = new CustomResponse("error", "Id is null");
             return null;

@@ -1,7 +1,7 @@
 ﻿using AvengersAPI.Context;
 using AvengersAPI.Entities;
-using AvengersAPI.Foo;
 using AvengersAPI.Models;
+using AvengersAPI.Requests;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Task = AvengersAPI.Entities.Task;
