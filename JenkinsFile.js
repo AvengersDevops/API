@@ -30,7 +30,7 @@ pipeline
 
 			steps
 			{
-				sh "dotnet retore"
+				sh "dotnet restore"
 				sh "dotnet build AvengersAPI/AvengersAPI.csproj"
 			}
 
