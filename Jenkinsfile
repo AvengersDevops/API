@@ -31,8 +31,7 @@ pipeline
 			steps
 			{
 				echo "BUILD STARTED"
-				sh "dotnet restore"
-				sh "dotnet build AvengersAPI/AvengersAPI.csproj"
+				sh "docker build . -t avengersweb"
 				echo "BUILD COMPLETED"
 			}
 
