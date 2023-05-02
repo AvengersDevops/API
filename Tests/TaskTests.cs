@@ -11,13 +11,6 @@ namespace Tests;
 public class TaskTests
 {
     private readonly MyDbContext _context = new();
-    private int _maxId;
-    
-    [SetUp]
-    public void Setup()
-    {
-        _maxId = _context.Tasks.Max(t => t.Id);
-    }
     
     [Test]
     public async Task CreateGood()
@@ -300,9 +293,11 @@ var request = new DefaultHttpContext
 [Test]
     public async Task DeleteGood()
     {
+        var maxId = _context.Tasks.Max(t => t.Id);
+
         var body = new Dictionary<string, dynamic>
         {
-            { "id", _maxId.ToString() }
+            { "id", maxId.ToString() }
         };
 
         var json = JsonConvert.SerializeObject(body);
