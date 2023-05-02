@@ -1,0 +1,12 @@
+version: "2"
+services: 
+    API:
+        # it should be called avengersapi but whatever
+        image: avengersweb
+        networks:
+            - wheel
+        ports:
+            - '5001:80'
+networks:
+    wheel: 
+        driver: bridge
