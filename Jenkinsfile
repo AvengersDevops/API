@@ -68,9 +68,10 @@ pipeline
 		{
 			steps
 			{
-			echo "DEPLOYMENT STARTED"
-			
-			echo "DEPLOYMENT COMPLETED"
+				echo "DEPLOYMENT STARTED"
+				sh "docker compose down"
+				sh "docker compose up -d"
+				echo "DEPLOYMENT COMPLETED"
 			}
 		}
 	}
