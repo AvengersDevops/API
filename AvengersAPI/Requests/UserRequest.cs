@@ -100,4 +100,24 @@ public abstract class UserRequest
             Id = int.Parse(body.id.ToString())
         };
     }
+    public static User? Login(dynamic body, out CustomResponse? customResponse)
+    {
+        if (ParameterHandler.IsNull(body.email))
+        {
+            customResponse = new CustomResponse("error", "Email is null");
+            return null;
+        }
+        if (ParameterHandler.IsNull(body.password))
+        {
+            customResponse = new CustomResponse("error", "Password is null");
+            return null;
+        }
+
+        customResponse = null;
+        return new User
+        {
+            Email = body.email,
+            Password = body.password
+        };
+    }
 }
