@@ -23,65 +23,23 @@ public class TaskTests
             { "dueDate", "2021-01-01" },
             { "done", "false" }
         };
-
-        var json = JsonConvert.SerializeObject(body);
-        var request = new DefaultHttpContext
-        {
-            Request =
-            {
-                Body = new MemoryStream(Encoding.UTF8.GetBytes(json))
-            }
-        };
+        TaskController taskController = new();
         
-        var taskController = new TaskController
-        {
-            ControllerContext = new ControllerContext
-            {
-                HttpContext = request
-            }
-        };
-        
-        var r = JsonConvert.SerializeObject(await taskController.Create());
-        var response = JObject.Parse(r);
-        
-        Assert.That(response, Is.Not.Null);
-        Assert.That(response, Is.Not.Empty);
-        Assert.That(response["status"]!.ToString() == "success", Is.True);
+        await TestHandler.Do(body, Expect.Success, taskController, taskController.Create);
     }
     
     [Test]
     public async Task CreateBad()
     {
-        var body = new Dictionary<string, string>
+        var body = new Dictionary<string, dynamic>
         {
             { "title", "Test" },
             { "description", "Test" },
             { "dueDate", "2021-01-01" }
         };
-
-        var json = JsonConvert.SerializeObject(body);
-        var request = new DefaultHttpContext
-        {
-            Request =
-            {
-                Body = new MemoryStream(Encoding.UTF8.GetBytes(json))
-            }
-        };
+        TaskController taskController = new();
         
-        var taskController = new TaskController
-        {
-            ControllerContext = new ControllerContext
-            {
-                HttpContext = request
-            }
-        };
-        
-        var r = JsonConvert.SerializeObject(await taskController.Create());
-        var response = JObject.Parse(r);
-        
-        Assert.That(response, Is.Not.Null);
-        Assert.That(response, Is.Not.Empty);
-        Assert.That(response["status"]!.ToString() == "error", Is.True);
+        await TestHandler.Do(body, Expect.Error, taskController, taskController.Create);
     }
     
     [Test]
@@ -91,30 +49,9 @@ public class TaskTests
         {
             { "id", "2" }
         };
-
-        var json = JsonConvert.SerializeObject(body);
-        var request = new DefaultHttpContext
-        {
-            Request =
-            {
-                Body = new MemoryStream(Encoding.UTF8.GetBytes(json))
-            }
-        };
+        TaskController taskController = new();
         
-        var taskController = new TaskController
-        {
-            ControllerContext = new ControllerContext
-            {
-                HttpContext = request
-            }
-        };
-        
-        var r = JsonConvert.SerializeObject(await taskController.Read());
-        var response = JObject.Parse(r);
-        
-        Assert.That(response, Is.Not.Null);
-        Assert.That(response, Is.Not.Empty);
-        Assert.That(response["status"]!.ToString() == "success", Is.True);
+        await TestHandler.Do(body, Expect.Success, taskController, taskController.Read);
     }
     
     [Test]
@@ -124,30 +61,9 @@ public class TaskTests
         {
             { "id", "0" }
         };
-
-        var json = JsonConvert.SerializeObject(body);
-        var request = new DefaultHttpContext
-        {
-            Request =
-            {
-                Body = new MemoryStream(Encoding.UTF8.GetBytes(json))
-            }
-        };
+        TaskController taskController = new();
         
-        var taskController = new TaskController
-        {
-            ControllerContext = new ControllerContext
-            {
-                HttpContext = request
-            }
-        };
-        
-        var r = JsonConvert.SerializeObject(await taskController.Read());
-        var response = JObject.Parse(r);
-        
-        Assert.That(response, Is.Not.Null);
-        Assert.That(response, Is.Not.Empty);
-        Assert.That(response["status"]!.ToString() == "error", Is.True);
+        await TestHandler.Do(body, Expect.Error, taskController, taskController.Read);
     }
 
     [Test]
@@ -157,30 +73,9 @@ public class TaskTests
         {
             { "userId", "1" }
         };
+        TaskController taskController = new();
         
-        var json = JsonConvert.SerializeObject(body);
-var request = new DefaultHttpContext
-        {
-            Request =
-            {
-                Body = new MemoryStream(Encoding.UTF8.GetBytes(json))
-            }
-        };
-
-        var taskController = new TaskController
-        {
-            ControllerContext = new ControllerContext
-            {
-                HttpContext = request
-            }
-        };
-        
-        var r = JsonConvert.SerializeObject(await taskController.ReadAll());
-        var response = JObject.Parse(r);
-        
-        Assert.That(response, Is.Not.Null);
-        Assert.That(response, Is.Not.Empty);
-        Assert.That(response["status"]!.ToString() == "success", Is.True);
+        await TestHandler.Do(body, Expect.Success, taskController, taskController.ReadAll);
     }
 
     [Test]
@@ -190,32 +85,11 @@ var request = new DefaultHttpContext
         {
             { "userId", "0" }
         };
-
-        var json = JsonConvert.SerializeObject(body);
-        var request = new DefaultHttpContext
-        {
-            Request =
-            {
-                Body = new MemoryStream(Encoding.UTF8.GetBytes(json))
-            }
-        };
-
-        var taskController = new TaskController
-        {
-            ControllerContext = new ControllerContext
-            {
-                HttpContext = request
-            }
-        };
-
-        var r = JsonConvert.SerializeObject(await taskController.ReadAll());
-        var response = JObject.Parse(r);
-
-        Assert.That(response, Is.Not.Null);
-        Assert.That(response, Is.Not.Empty);
-        Assert.That(response["status"]!.ToString() == "error", Is.True);
+        TaskController taskController = new();
+        
+        await TestHandler.Do(body, Expect.Error, taskController, taskController.ReadAll);
     }
-    
+
     [Test]
     public async Task UpdateGood()
     {
@@ -227,32 +101,11 @@ var request = new DefaultHttpContext
             { "dueDate", "2021-01-01" },
             { "done", "false" }
         };
-
-        var json = JsonConvert.SerializeObject(body);
-        var request = new DefaultHttpContext
-        {
-            Request =
-            {
-                Body = new MemoryStream(Encoding.UTF8.GetBytes(json))
-            }
-        };
+        TaskController taskController = new();
         
-        var taskController = new TaskController
-        {
-            ControllerContext = new ControllerContext
-            {
-                HttpContext = request
-            }
-        };
-        
-        var r = JsonConvert.SerializeObject(await taskController.Update());
-        var response = JObject.Parse(r);
-        
-        Assert.That(response, Is.Not.Null);
-        Assert.That(response, Is.Not.Empty);
-        Assert.That(response["status"]!.ToString() == "success", Is.True);
+        await TestHandler.Do(body, Expect.Success, taskController, taskController.Update);
     }
-    
+
     [Test]
     public async Task UpdateBad()
     {
@@ -264,33 +117,12 @@ var request = new DefaultHttpContext
             { "dueDate", "2021-01-01" },
             { "done", "false" }
         };
-
-        var json = JsonConvert.SerializeObject(body);
-        var request = new DefaultHttpContext
-        {
-            Request =
-            {
-                Body = new MemoryStream(Encoding.UTF8.GetBytes(json))
-            }
-        };
+        TaskController taskController = new();
         
-        var taskController = new TaskController
-        {
-            ControllerContext = new ControllerContext
-            {
-                HttpContext = request
-            }
-        };
-        
-        var r = JsonConvert.SerializeObject(await taskController.Update());
-        var response = JObject.Parse(r);
-        
-        Assert.That(response, Is.Not.Null);
-        Assert.That(response, Is.Not.Empty);
-        Assert.That(response["status"]!.ToString() == "error", Is.True);
+        await TestHandler.Do(body, Expect.Error, taskController, taskController.Update);
     }
     
-[Test]
+    [Test]
     public async Task DeleteGood()
     {
         var maxId = _context.Tasks.Max(t => t.Id);
@@ -299,30 +131,9 @@ var request = new DefaultHttpContext
         {
             { "id", maxId.ToString() }
         };
-
-        var json = JsonConvert.SerializeObject(body);
-        var request = new DefaultHttpContext
-        {
-            Request =
-            {
-                Body = new MemoryStream(Encoding.UTF8.GetBytes(json))
-            }
-        };
+        TaskController taskController = new();
         
-        var taskController = new TaskController
-        {
-            ControllerContext = new ControllerContext
-            {
-                HttpContext = request
-            }
-        };
-        
-        var r = JsonConvert.SerializeObject(await taskController.Delete());
-        var response = JObject.Parse(r);
-        
-        Assert.That(response, Is.Not.Null);
-        Assert.That(response, Is.Not.Empty);
-        Assert.That(response["status"]!.ToString() == "success", Is.True);
+        await TestHandler.Do(body, Expect.Success, taskController, taskController.Delete);
     }
 
     [Test]
@@ -332,29 +143,8 @@ var request = new DefaultHttpContext
         {
             { "id", "0" }
         };
-
-        var json = JsonConvert.SerializeObject(body);
-        var request = new DefaultHttpContext
-        {
-            Request =
-            {
-                Body = new MemoryStream(Encoding.UTF8.GetBytes(json))
-            }
-        };
-
-        var taskController = new TaskController
-        {
-            ControllerContext = new ControllerContext
-            {
-                HttpContext = request
-            }
-        };
-
-        var r = JsonConvert.SerializeObject(await taskController.Delete());
-        var response = JObject.Parse(r);
-
-        Assert.That(response, Is.Not.Null);
-        Assert.That(response, Is.Not.Empty);
-        Assert.That(response["status"]!.ToString() == "error", Is.True);
+        TaskController taskController = new();
+        
+        await TestHandler.Do(body, Expect.Error, taskController, taskController.Delete);
     }
 }
