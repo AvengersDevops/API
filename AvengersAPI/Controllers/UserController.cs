@@ -3,6 +3,7 @@ using AvengersAPI.Entities;
 using AvengersAPI.Models;
 using AvengersAPI.Requests;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace AvengersAPI.Controllers;
 [ApiController]
@@ -80,5 +81,23 @@ public class UserController : ControllerBase
         await _context.SaveChangesAsync();
         
         return new CustomResponse("success", $"User with id {user.Id} deleted", u);
+    }
+    [HttpPost]
+    [Route(nameof(Login))]
+    public async Task<CustomResponse> Login()
+    {
+        CustomResponse? customResponse = null;
+        User? user = await Validator.Body<User>(Request.Body, d => UserRequest.Login(d, out customResponse));
+        if (customResponse is not null)
+            return customResponse;
+        
+        var u = await _context.Users.FirstOrDefaultAsync(u => u.Email == user!.Email);
+        if (u is null)
+            return new CustomResponse("error", $"User with email {user.Email} not found");
+        
+        if (u.Password != user.Password)
+            return new CustomResponse("error", $"User with email {user.Email} provided wrong password");
+        
+        return new CustomResponse("success", $"User with email {user.Email} successfully logged in", u);
     }
 }
