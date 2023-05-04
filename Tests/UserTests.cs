@@ -21,30 +21,9 @@ public class UserTests
             { "email", "Testemail" },
             { "password", "Testpassword" }
         };
-
-        var json = JsonConvert.SerializeObject(body);
-        var request = new DefaultHttpContext
-        {
-            Request =
-            {
-                Body = new MemoryStream(Encoding.UTF8.GetBytes(json))
-            }
-        };
-
-        var userController = new UserController
-        {
-            ControllerContext = new ControllerContext
-            {
-                HttpContext = request
-            }
-        };
-
-        var r = JsonConvert.SerializeObject(await userController.Create());
-        var response = JObject.Parse(r);
-
-        Assert.That(response, Is.Not.Null);
-        Assert.That(response, Is.Not.Empty);
-        Assert.That(response["status"]!.ToString() == "success", Is.True);
+        UserController userController = new();
+        
+        await TestHandler.Do(body, Expect.Success, userController, userController.Create);
     }
     
     [Test]
@@ -55,30 +34,9 @@ public class UserTests
             { "name", "Testname" },
             { "password", "Testpassword" }
         };
-
-        var json = JsonConvert.SerializeObject(body);
-        var request = new DefaultHttpContext
-        {
-            Request =
-            {
-                Body = new MemoryStream(Encoding.UTF8.GetBytes(json))
-            }
-        };
-
-        var userController = new UserController
-        {
-            ControllerContext = new ControllerContext
-            {
-                HttpContext = request
-            }
-        };
-
-        var r = JsonConvert.SerializeObject(await userController.Create());
-        var response = JObject.Parse(r);
-
-        Assert.That(response, Is.Not.Null);
-        Assert.That(response, Is.Not.Empty);
-        Assert.That(response["status"]!.ToString() == "error", Is.True);
+        UserController userController = new();
+        
+        await TestHandler.Do(body, Expect.Error, userController, userController.Create);
     }
 
     [Test]
@@ -88,30 +46,9 @@ public class UserTests
         {
             { "id", "1" }
         };
-
-        var json = JsonConvert.SerializeObject(body);
-        var request = new DefaultHttpContext
-        {
-            Request =
-            {
-                Body = new MemoryStream(Encoding.UTF8.GetBytes(json))
-            }
-        };
-
-        var userController = new UserController
-        {
-            ControllerContext = new ControllerContext
-            {
-                HttpContext = request
-            }
-        };
-
-        var r = JsonConvert.SerializeObject(await userController.Read());
-        var response = JObject.Parse(r);
-
-        Assert.That(response, Is.Not.Null);
-        Assert.That(response, Is.Not.Empty);
-        Assert.That(response["status"]!.ToString() == "success", Is.True);
+        UserController userController = new();
+        
+        await TestHandler.Do(body, Expect.Success, userController, userController.Read);
     }
     
     [Test]
@@ -121,30 +58,9 @@ public class UserTests
         {
             { "id", "0" }
         };
-
-        var json = JsonConvert.SerializeObject(body);
-        var request = new DefaultHttpContext
-        {
-            Request =
-            {
-                Body = new MemoryStream(Encoding.UTF8.GetBytes(json))
-            }
-        };
-
-        var userController = new UserController
-        {
-            ControllerContext = new ControllerContext
-            {
-                HttpContext = request
-            }
-        };
-
-        var r = JsonConvert.SerializeObject(await userController.Read());
-        var response = JObject.Parse(r);
-
-        Assert.That(response, Is.Not.Null);
-        Assert.That(response, Is.Not.Empty);
-        Assert.That(response["status"]!.ToString() == "error", Is.True);
+        UserController userController = new();
+        
+        await TestHandler.Do(body, Expect.Error, userController, userController.Read);
     }
     
     [Test]
@@ -157,30 +73,9 @@ public class UserTests
             { "email", "Testemail" },
             { "password", "Testpassword" }
         };
-
-        var json = JsonConvert.SerializeObject(body);
-        var request = new DefaultHttpContext
-        {
-            Request =
-            {
-                Body = new MemoryStream(Encoding.UTF8.GetBytes(json))
-            }
-        };
-
-        var userController = new UserController
-        {
-            ControllerContext = new ControllerContext
-            {
-                HttpContext = request
-            }
-        };
-
-        var r = JsonConvert.SerializeObject(await userController.Update());
-        var response = JObject.Parse(r);
-
-        Assert.That(response, Is.Not.Null);
-        Assert.That(response, Is.Not.Empty);
-        Assert.That(response["status"]!.ToString() == "success", Is.True);
+        UserController userController = new();
+        
+        await TestHandler.Do(body, Expect.Success, userController, userController.Update);
     }
     
     [Test]
@@ -193,30 +88,9 @@ public class UserTests
             { "email", "Testemail" },
             { "password", "Testpassword" }
         };
-
-        var json = JsonConvert.SerializeObject(body);
-        var request = new DefaultHttpContext
-        {
-            Request =
-            {
-                Body = new MemoryStream(Encoding.UTF8.GetBytes(json))
-            }
-        };
-
-        var userController = new UserController
-        {
-            ControllerContext = new ControllerContext
-            {
-                HttpContext = request
-            }
-        };
-
-        var r = JsonConvert.SerializeObject(await userController.Update());
-        var response = JObject.Parse(r);
-
-        Assert.That(response, Is.Not.Null);
-        Assert.That(response, Is.Not.Empty);
-        Assert.That(response["status"]!.ToString() == "error", Is.True);
+        UserController userController = new();
+        
+        await TestHandler.Do(body, Expect.Error, userController, userController.Update);
     }
     
     [Test]
@@ -228,30 +102,9 @@ public class UserTests
         {
             { "id", maxId.ToString() }
         };
-
-        var json = JsonConvert.SerializeObject(body);
-        var request = new DefaultHttpContext
-        {
-            Request =
-            {
-                Body = new MemoryStream(Encoding.UTF8.GetBytes(json))
-            }
-        };
-
-        var userController = new UserController
-        {
-            ControllerContext = new ControllerContext
-            {
-                HttpContext = request
-            }
-        };
-
-        var r = JsonConvert.SerializeObject(await userController.Delete());
-        var response = JObject.Parse(r);
-
-        Assert.That(response, Is.Not.Null);
-        Assert.That(response, Is.Not.Empty);
-        Assert.That(response["status"]!.ToString() == "success", Is.True);
+        UserController userController = new();
+        
+        await TestHandler.Do(body, Expect.Success, userController, userController.Delete);
     }
 
     [Test]
@@ -261,30 +114,9 @@ public class UserTests
         {
             { "id", "0" }
         };
-
-        var json = JsonConvert.SerializeObject(body);
-        var request = new DefaultHttpContext
-        {
-            Request =
-            {
-                Body = new MemoryStream(Encoding.UTF8.GetBytes(json))
-            }
-        };
-
-        var userController = new UserController
-        {
-            ControllerContext = new ControllerContext
-            {
-                HttpContext = request
-            }
-        };
-
-        var r = JsonConvert.SerializeObject(await userController.Delete());
-        var response = JObject.Parse(r);
-
-        Assert.That(response, Is.Not.Null);
-        Assert.That(response, Is.Not.Empty);
-        Assert.That(response["status"]!.ToString() == "error", Is.True);
+        UserController userController = new();
+        
+        await TestHandler.Do(body, Expect.Error, userController, userController.Delete);
     }
 
     [Test]
@@ -295,31 +127,9 @@ public class UserTests
             { "email", "Testemail" },
             { "password", "Testpassword" }
         };
+        UserController userController = new();
         
-        var json = JsonConvert.SerializeObject(body);
-        var request = new DefaultHttpContext
-        {
-            Request =
-            {
-                Body = new MemoryStream(Encoding.UTF8.GetBytes(json))
-            }
-        };
-        
-        var userController = new UserController
-        {
-            ControllerContext = new ControllerContext
-            {
-                HttpContext = request
-            }
-        };
-        
-        var r = JsonConvert.SerializeObject(await userController.Login());
-        var response = JObject.Parse(r);
-        
-        Assert.That(response, Is.Not.Null);
-        Assert.That(response, Is.Not.Empty);
-        Assert.That(response["status"]!.ToString() == "success", Is.True);
-        
+        await TestHandler.Do(body, Expect.Success, userController, userController.Login);
     }
     
     [Test]
@@ -328,33 +138,10 @@ public class UserTests
         var body = new Dictionary<string, dynamic>
         {
             { "email", "Testemail" },
-            { "password", "Testpassword1" }
+            { "password", "AAAAAAAAA" }
         };
+        UserController userController = new();
         
-        var json = JsonConvert.SerializeObject(body);
-        var request = new DefaultHttpContext
-        {
-            Request =
-            {
-                Body = new MemoryStream(Encoding.UTF8.GetBytes(json))
-            }
-        };
-        
-        var userController = new UserController
-        {
-            ControllerContext = new ControllerContext
-            {
-                HttpContext = request
-            }
-        };
-        
-        var r = JsonConvert.SerializeObject(await userController.Login());
-        var response = JObject.Parse(r);
-        
-        Assert.That(response, Is.Not.Null);
-        Assert.That(response, Is.Not.Empty);
-        Assert.That(response["status"]!.ToString() == "error", Is.True);
-        
+        await TestHandler.Do(body, Expect.Error, userController, userController.Login);
     }
-
 }
