@@ -16,7 +16,7 @@ public enum Expect
 
 public abstract class TestHandler
 {
-    public static async Task Do(Dictionary<string, dynamic> body, Expect expect, dynamic controller, Func<Task<CustomResponse>> func)
+    public static async Task Run(Dictionary<string, dynamic> body, Expect expect, dynamic controller, Func<Task<CustomResponse>> func)
     {
         var json = JsonConvert.SerializeObject(body);
         var request = new DefaultHttpContext
