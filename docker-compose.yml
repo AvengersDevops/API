@@ -5,7 +5,8 @@ services:
         networks:
             - wheel
         ports:
-            - '5001:80'
+            - '127.0.0.1:80:80'
+
 networks:
     wheel: 
         driver: bridge
