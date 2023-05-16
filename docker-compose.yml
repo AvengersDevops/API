@@ -1,8 +1,7 @@
 version: "2"
 services: 
     API:
-        # it should be called avengersapi but whatever
-        image: avengersweb
+        image: avengersapi
         networks:
             - wheel
         ports:
