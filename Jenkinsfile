@@ -31,7 +31,8 @@ pipeline
 			steps
 			{
 				echo "BUILD STARTED"
-				sh "docker build . -t avengersapi"
+				sh "sudo docker build . -t avengersapi"
+				sh "P@ssword123++"
 				echo "BUILD COMPLETED"
 			}
 
