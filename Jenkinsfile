@@ -18,7 +18,7 @@ pipeline
 
 				dir("Tests")
 				{
-					sh "rm -rf TestResults"
+					sh "rm -rf TestResults/"
 				}
 
 				echo "CLEANUP COMPLETED"
@@ -31,7 +31,9 @@ pipeline
 			steps
 			{
 				echo "BUILD STARTED"
+				
 				sh "docker build . -t avengersapi"
+				
 				echo "BUILD COMPLETED"
 			}
 
@@ -47,8 +49,6 @@ pipeline
 				{
 					sh "dotnet add package coverlet.collector"
 					sh "dotnet test --collect:'XPlat Code Coverage'"
-					sh "dotnet restore"
-					sh "dotnet test Tests.csproj"
 				}
 				
 				echo "TEST COMPLETED"
@@ -69,8 +69,10 @@ pipeline
 			steps
 			{
 				echo "DEPLOYMENT STARTED"
+				
 				sh "docker-compose down"
 				sh "docker-compose up -d"
+				
 				echo "DEPLOYMENT COMPLETED"
 			}
 		}
