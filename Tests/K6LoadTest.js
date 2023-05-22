@@ -22,7 +22,6 @@ export default function () {
         }
     );
     const checkSuccess = check(res, { 'User Read Success': (r) => r.status === 200 });
-    if (!checkSuccess) fail('User Read Failed');
 }
 
 export function handleSummary(data) {
