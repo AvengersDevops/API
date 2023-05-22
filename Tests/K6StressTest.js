@@ -31,6 +31,6 @@ export default function () {
 
 export function handleSummary(data) {
     return {
-        "/Tests/K6Reports/LoadTestSummary.html": htmlReport(data),
+        "/Tests/K6Reports/StressTestSummary.html": htmlReport(data),
     };
 }
