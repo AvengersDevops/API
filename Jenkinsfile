@@ -19,6 +19,9 @@ pipeline
 				dir("Tests")
 				{
 					sh "rm -rf TestResults/"
+					sh "rm -rf K6Reports/"
+					sh "mkdir K6Reports"
+					sh "chmod -R 777 K6Reports"
 				}
 
 				echo "CLEANUP COMPLETED"
@@ -72,6 +75,12 @@ pipeline
 				
 				sh "docker-compose down"
 				sh "docker-compose up -d"
+				
+				sh "docker run --rm -v /var/lib/jenkins/workspace/RadonAPI/Tests:/Tests -e HOSTING=http://128.140.9.68:80 loadimpact/k6:latest run /Tests/K6StressTest.js"
+				sh "docker run --rm -v /var/lib/jenkins/workspace/RadonAPI/Tests:/Tests -e HOSTING=http://128.140.9.68:80 loadimpact/k6:latest run /Tests/K6SoakTest.js"
+				sh "docker run --rm -v /var/lib/jenkins/workspace/RadonAPI/Tests:/Tests -e HOSTING=http://128.140.9.68:80 loadimpact/k6:latest run /Tests/K6LoadTest.js"
+				
+				archiveArtifacts "Tests/K6Reports/**/*"
 				
 				echo "DEPLOYMENT COMPLETED"
 			}
