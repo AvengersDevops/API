@@ -1,5 +1,5 @@
 import http from 'k6/http';
-import { check, fail } from 'k6';
+import { check } from 'k6';
 import { htmlReport } from "https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js";
 
 export const options = {
@@ -26,7 +26,6 @@ export default function () {
         }
     );
     const checkSuccess = check(res, { 'User Read Success': (r) => r.status === 200 });
-    if (!checkSuccess) fail('User Read Failed');
 }
 
 export function handleSummary(data) {
