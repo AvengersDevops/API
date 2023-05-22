@@ -4,7 +4,7 @@ import { htmlReport } from "https://raw.githubusercontent.com/benc-uk/k6-reporte
 
 export const options = {
   thresholds: {
-    http_req_failed: ['rate<0.1'],
+    http_req_failed: ['rate<0.01'],
   },
 };
 
@@ -26,6 +26,7 @@ export default function () {
         }
     );
     const checkSuccess = check(res, { 'User Read Success': (r) => r.status === 200 });
+    if (!checkSuccess) fail('User Read Failed');
 }
 
 export function handleSummary(data) {
